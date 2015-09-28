@@ -111,6 +111,8 @@ testQuickMockReleaseManyStubs()
     assertNull "mycmd2 should no more exist" "$(type -t mycmd2)"
     assertNull "mycmd4 should no more exist" "$(type -t mycmd4)"
     assertSame "QUICKMOCK_STUBS should have been updated" "mycmd1 mycmd3" "${QUICKMOCK_STUBS}"
+
+    unset mycmd1 mycmd3
 }
 
 testQuickMockReleaseAllStubs()
@@ -124,6 +126,33 @@ testQuickMockReleaseAllStubs()
     assertNull "mycmd2 should no more exist" "$(type -t mycmd2)"
     assertNull "mycmd3 should no more exist" "$(type -t mycmd3)"
     assertNull "no more stubs are tracked" "${QUICKMOCK_STUBS}"
+}
+
+testQuickMockRevertPreviousExistingCommandAfterRelease()
+{
+    local cmd="ls --version"
+    local realvalue="$(${cmd})"
+
+    QuickMock.newStub "ls"
+    QuickMock.releaseStubs
+
+    assertSame "realvalue should be returned" "${realvalue}" "$(${cmd})"
+}
+
+testQuickMockRevertPreviousExistingFunctionAfterRelease()
+{
+    fake()
+    {
+        echo "fake"
+    }
+
+    local realvalue="fake"
+
+    QuickMock.newStub "fake" "echo fake stub"
+    QuickMock.releaseStubs
+
+    assertSame "realvalue should be returned" "${realvalue}" "$(fake)"
+    unset fake
 }
 
 testQuickMockSupportNormalizeSpaces()
