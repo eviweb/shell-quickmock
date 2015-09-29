@@ -21,6 +21,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - mocking integration tests
 - trim support function
 - new expectation _Known Issues_ section in README
+- new README section about customization of the mock behaviour
 
 ### 0.2.1 - 2015-09-29
 #### Changed

@@ -82,6 +82,18 @@ testMockingWithAndReturn()
     assertEquals "expected values should be returned" "${expected}" "$(mock)"
 }
 
+testMockingWithSeveralExpectations()
+{
+    local expected="value for a"
+
+    QuickMock.newMock "mock" "$(shouldReceive a)" "$(shouldNotReceive b)" "$(andReturn ${expected})"
+
+    assertEquals "expected values should be returned" "${expected}" "$(mock a)"
+    assertEquals "expected values should be returned" "${expected}" "$(mock a)"
+    assertNotEquals "expected values should not be returned" "${expected}" "$(mock)"
+    assertFalse "Should fail" "mock b"
+}
+
 ###### Setup / Teardown #####
 tearDown()
 {

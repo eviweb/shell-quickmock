@@ -104,6 +104,17 @@ QuickMock.newMock "mock" "$(andReturn value to be returned)"
 res=$(mock) # $res = "value to be returned"
 ```
 
+### Customize the mock behaviour
+Now it is possible to customize the mock behaviour by putting together several expectations.    
+_Example:_    
+
+```bash
+QuickMock.newMock "mock" "$(shouldReceive arg1)" "$(shouldNotReceive arg2)" "$(andReturn value for arg1)"
+
+res=$(mock arg1) # succeed and $res = "value for arg1"
+res=$(mock arg2) # failed and $res should contain an error message
+```
+
 Common API
 ----------
 ### Release a Double
