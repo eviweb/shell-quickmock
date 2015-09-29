@@ -17,10 +17,11 @@ QuickMock.newMock()
     fi
 
     for expectation in ${expectations[@]}; do
-        local name="$(QuickMock.expectation.extractName ${expectation})"
+        local trimed="$(QuickMock.support.trim ${expectation})"
+        local name="$(QuickMock.expectation.extractName ${trimed})"
         QuickMock.expectation.checkNamePattern "${name}"
 
-        eval "${id}${expectation}"
+        eval "${id}${trimed}"
 
         if QuickMock.expectation.shouldGetCallingArguments "${name}"; then
             body="${body} ${id}${name} \$@ && "

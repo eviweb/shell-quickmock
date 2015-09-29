@@ -146,6 +146,18 @@ testQuickMockRequiresAtLeastOneExpectation()
     unset ${mock}
 }
 
+testQuickMockShouldTrimAnExpectationName()
+{
+    local mock="mymock"
+    local expectation="   __doSomething() { return 0; }  "
+
+    QuickMock.newMock "${mock}" "${expectation}"
+
+    assertTrue "${mock} is built and run as expected" ${mock}
+
+    unset ${mock}
+}
+
 testQuickMockStubsAreTracked()
 {
     local expected="mymock1 mymock2"
@@ -171,7 +183,6 @@ testQuickMockReleaseMocks()
     assertNull "mymock2 should no more exist" "$(type -t mymock2)"
     assertNull "no more stubs are tracked" "${QUICKMOCK_DOUBLES}"
 }
-
 
 ###### Setup / Teardown #####
 setUp()
