@@ -6,7 +6,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 #### Changed
 - detail the expectation catalog in README
-- add expectation _Known Issues_ section
 
 #### Fixed
 - add missing _must_ keyword in expectation convention paragraph of README
@@ -20,6 +19,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - shouldNotReceive expectation
 - mocking integration tests
 - trim support function
+- new expectation _Known Issues_ section in README
 
 ### 0.2.1 - 2015-09-29
 #### Changed
