@@ -57,6 +57,7 @@ testInitialization()
     local functions=( 
         "QuickMock.support.normalizeSpaces"
         "QuickMock.newStub"
+        "QuickMock.trackDouble"
     )
 
     for function in ${functions[@]}; do

@@ -79,23 +79,23 @@ testStubBodyCanBeOmitted()
 testQuickMockStubsAreTracked()
 {
     local expected="mycmd1 mycmd2 mycmd3"
-    assertNull "QUICKMOCK_STUBS should not exists" "${QUICKMOCK_STUBS}"
+    assertNull "QUICKMOCK_DOUBLES should not exists" "${QUICKMOCK_DOUBLES}"
 
     QuickMock.newStub "mycmd1"
     QuickMock.newStub "mycmd2"
     QuickMock.newStub "mycmd3"
 
-    assertSame "QUICKMOCK_STUBS should list all stubs" "${expected}" "${QUICKMOCK_STUBS}"
+    assertSame "QUICKMOCK_DOUBLES should list all stubs" "${expected}" "${QUICKMOCK_DOUBLES}"
     unset mycmd1 mycmd2 mycmd3
 }
 
 testQuickMockReleaseOneStub()
 {
     QuickMock.newStub "mycmd1"
-    QuickMock.releaseStubs "mycmd1"
+    QuickMock.releaseDoubles "mycmd1"
 
     assertNull "mycmd1 should no more exist" "$(type -t mycmd1)"
-    assertNull "mycmd1 should no more be tracked" "${QUICKMOCK_STUBS}"
+    assertNull "mycmd1 should no more be tracked" "${QUICKMOCK_DOUBLES}"
 }
 
 testQuickMockReleaseManyStubs()
@@ -105,13 +105,13 @@ testQuickMockReleaseManyStubs()
     QuickMock.newStub "mycmd3"
     QuickMock.newStub "mycmd4"
     
-    QuickMock.releaseStubs "mycmd2" "mycmd4"
+    QuickMock.releaseDoubles "mycmd2" "mycmd4"
 
     assertEquals "mycmd1 should still exist" "function" "$(type -t mycmd1)"
     assertEquals "mycmd3 should still exist" "function" "$(type -t mycmd3)"
     assertNull "mycmd2 should no more exist" "$(type -t mycmd2)"
     assertNull "mycmd4 should no more exist" "$(type -t mycmd4)"
-    assertSame "QUICKMOCK_STUBS should have been updated" "mycmd1 mycmd3" "${QUICKMOCK_STUBS}"
+    assertSame "QUICKMOCK_DOUBLES should have been updated" "mycmd1 mycmd3" "${QUICKMOCK_DOUBLES}"
 
     unset mycmd1 mycmd3
 }
@@ -122,11 +122,11 @@ testQuickMockReleaseAllStubs()
     QuickMock.newStub "mycmd2"
     QuickMock.newStub "mycmd3"
     
-    QuickMock.releaseStubs
+    QuickMock.releaseDoubles
     assertNull "mycmd1 should no more exist" "$(type -t mycmd1)"
     assertNull "mycmd2 should no more exist" "$(type -t mycmd2)"
     assertNull "mycmd3 should no more exist" "$(type -t mycmd3)"
-    assertNull "no more stubs are tracked" "${QUICKMOCK_STUBS}"
+    assertNull "no more stubs are tracked" "${QUICKMOCK_DOUBLES}"
 }
 
 testQuickMockRevertPreviousExistingCommandAfterRelease()
@@ -135,7 +135,7 @@ testQuickMockRevertPreviousExistingCommandAfterRelease()
     local realvalue="$(${cmd})"
 
     QuickMock.newStub "ls"
-    QuickMock.releaseStubs
+    QuickMock.releaseDoubles
 
     assertSame "realvalue should be returned" "${realvalue}" "$(${cmd})"
 }
@@ -150,7 +150,7 @@ testQuickMockRevertPreviousExistingFunctionAfterRelease()
     local realvalue="fake"
 
     QuickMock.newStub "fake" "echo fake stub"
-    QuickMock.releaseStubs
+    QuickMock.releaseDoubles
 
     assertSame "realvalue should be returned" "${realvalue}" "$(fake)"
     unset fake
@@ -159,7 +159,7 @@ testQuickMockRevertPreviousExistingFunctionAfterRelease()
 ###### Setup / Teardown #####
 setUp()
 {
-    unset QUICKMOCK_STUBS
+    unset QUICKMOCK_DOUBLES
 }
 
 ################ RUN shunit2 ################

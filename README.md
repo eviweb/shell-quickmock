@@ -17,8 +17,8 @@ _ie. from a script at the root of your project it could be something like this:_
 
 #### Do your stuff ####
 ```
-Stubbing
---------
+Stubbing API
+------------
 ### Stub a command or a function
 Done using **QuickMock.newStub**    
 _Synopsis:_ `QuickMock.newStub "command_name" ["command_body"]`
@@ -30,24 +30,26 @@ The stubbing process only alters the runtime shell.
 > **Important note**   
 > If a command with the same name already exists, it will be overwritten for the runtime duration.    
 > You can easily release your stub during the same process to get back the original command or function.    
-> see [Release a Stub](#release-a-stub)     
+> see [Release a Double](#release-a-double)     
 
 ```bash
 # ie stubbing ls
 QuickMock.newStub "ls" "echo 'my-file'"
 ```
 
-### Release a Stub
-Done using **QuickMock.releaseStubs**    
-_Synopsis:_ `QuickMock.releaseStubs ["stub1_name" ["stub2_name"]...]`    
+Common API
+----------
+### Release a Double
+Done using **QuickMock.releaseDoubles**    
+_Synopsis:_ `QuickMock.releaseDoubles ["double1_name" ["double2_name"]...]`    
 
 
-This will release the provided stubs and revert the potentially overwritten commands or functions.    
-Stub names are optional. If none is given then all created stubs are released.    
+This will release the provided doubles and revert the potentially overwritten commands or functions.    
+Double names are optional. If none is given then all created doubles are released.    
 
 ```bash
 # ie releasing the ls stub
-QuickMock.releaseStubs "ls"
+QuickMock.releaseDoubles "ls"
 ```
 
 License
