@@ -67,7 +67,7 @@ testShouldNotReceive()
     local code
 
     echo $(shouldNotReceive ${expected}) | grep -oe "for excl in ${expected};" &>/dev/null && code=$?
-    assertTrue "expected args: ${expected} should be in exlusion loop" ${code}
+    assertTrue "expected args: ${expected} should be in exclusion loop" ${code}
 
     echo $(shouldNotReceive ${expected}) | grep -oe "any of .*${expected}" &>/dev/null && code=$?
     assertTrue "expected args: ${expected} should be in error message" ${code}
