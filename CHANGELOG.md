@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 #### Fixed
 - add missing _must_ keyword in expectation convention paragraph of README
+- add missing comment for QuickMock.support.backupPrefix
 
 #### Added
 - shouldReceive expectation
@@ -23,7 +24,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - expectation support library basis
 
 ### 0.2.0 - 2015-09-29
-#### Removed
+#### Removed    
 - QUICKMOCK_STUBS global var in favor of a more generic QUICKMOCK_DOUBLES
 - QuickMock.trackStub in favor of a more generic QuickMock.trackDouble
 - QuickMock.releaseStubs in favor of a more generic QuickMock.releaseDoubles

@@ -38,6 +38,7 @@ QuickMock.support.revertFunction()
     fi
 }
 
+# return the prefix used to save overwritten commands
 QuickMock.support.backupPrefix()
 {
     echo "SQM_OLD_"
