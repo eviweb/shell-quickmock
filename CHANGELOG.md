@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### [Unreleased][unreleased]
 
+### 0.2.1 - 2015-09-29
 #### Changed
 - update README with mocking and expecation documentation
 
