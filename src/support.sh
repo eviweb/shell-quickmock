@@ -43,3 +43,16 @@ QuickMock.support.backupPrefix()
 {
     echo "SQM_OLD_"
 }
+
+
+# remove leading and trailing spaces from a given expression
+# @param string $1 expression
+# @see taken from bashfu's answer http://stackoverflow.com/a/3352015
+QuickMock.support.trim()
+{
+    local subject="$*"
+    subject="${subject#${subject%%[![:space:]]*}}"   # remove leading whitespace characters
+    subject="${subject%${subject##*[![:space:]]}}"   # remove trailing whitespace characters
+
+    echo -n "$subject"
+}

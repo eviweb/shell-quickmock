@@ -62,6 +62,15 @@ testQuickMockSupportNormalizeSpaces()
     assertSame "spaces have been correctly normalized" "${expected}" "$(QuickMock.support.normalizeSpaces ${subject})"
 }
 
+testQuickMockSupportTrim()
+{
+    local subject="   a   b c   d    "
+    local expected="a   b c   d"
+    local actual=$(QuickMock.support.trim "${subject}")
+
+    assertSame "leading and trailing spaces have been removed" "${expected}" "${actual}"
+}
+
 ################ RUN shunit2 ################
 findShunit2()
 {
