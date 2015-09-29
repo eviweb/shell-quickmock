@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### [Unreleased][unreleased]
 
+#### Fixed
+- add missing _must_ keyword in expectation convention paragraph of README
+
 ### 0.2.1 - 2015-09-29
 #### Changed
 - update README with mocking and expecation documentation

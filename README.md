@@ -60,7 +60,7 @@ Expectations
 An expectation:
 * is a function that will be evaluated at runtime
 * must be provided as a string
-* name begin with a double undescore `__` *(ie. __doSomething is valid, iamWrong is not)*
+* name must begin with a double undescore `__` *(ie. __doSomething is valid, iamWrong is not)*
 * whose name begins by `__should` will receive the arguments with which the mock is called
 
 > While waiting for some examples, please refer to the [mock tests](tests/mock_test.sh)
