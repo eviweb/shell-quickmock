@@ -78,6 +78,18 @@ mock a b c  # succeed
 mock a      # failed
 ```
 
+#### shouldNotReceive
+Used to ensure some arguments are not passed to the mock.    
+_Synopsis:_ `QuickMock.newMock "mock" "$(shouldNotReceive arg1 [arg2 [arg3]...])"`    
+_Example:_    
+
+```bash
+QuickMock.newMock "mock" "$(shouldNotReceive arg1 arg2)"
+
+mock arg3 arg4  # succeed
+mock arg3 arg1  # failed
+```
+
 Common API
 ----------
 ### Release a Double

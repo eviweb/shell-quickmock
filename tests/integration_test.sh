@@ -52,6 +52,7 @@ libdir()
 . $(libdir)/shell-testlib/bootstrap.sh
 
 load $(srcdir)/quickmock.sh
+
 ############ Integration tests #############
 testMockingWithShouldReceive()
 {
@@ -59,6 +60,17 @@ testMockingWithShouldReceive()
 
     assertTrue "Should pass" "mock a b c"
     assertFalse "Should not pass" "mock a b"
+}
+
+testMockingWithShouldNotReceive()
+{
+    QuickMock.newMock "mock" "$(shouldNotReceive a c)"
+
+    assertTrue "Should pass" "mock b"
+    assertTrue "Should pass" "mock"
+    assertTrue "Should pass" "mock ana ccc"
+    assertFalse "Should not pass" "mock a b"
+    assertFalse "Should not pass" "mock c b"
 }
 
 ###### Setup / Teardown #####

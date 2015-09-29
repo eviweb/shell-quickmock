@@ -61,6 +61,18 @@ testShouldReceive()
     assertSame "shouldReceive is correctly formed" "${expected}" "$(shouldReceive a b c)"
 }
 
+testShouldNotReceive()
+{
+    local expected="a c"
+    local code
+
+    echo $(shouldNotReceive ${expected}) | grep -oe "for excl in ${expected};" &>/dev/null && code=$?
+    assertTrue "expected args: ${expected} should be in exlusion loop" ${code}
+
+    echo $(shouldNotReceive ${expected}) | grep -oe "any of .*${expected}" &>/dev/null && code=$?
+    assertTrue "expected args: ${expected} should be in error message" ${code}
+}
+
 ################ RUN shunit2 ################
 findShunit2()
 {

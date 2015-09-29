@@ -37,3 +37,10 @@ shouldReceive()
 {
     echo "__shouldReceive() { [[ \"\$@\" == \"$@\" ]] || { echo \"Failed: expected to receive '$@', but got '\$@'\"; return 1; }; }"
 }
+
+# check if the mock does not receive any of the given arguments
+# @param string[] $@ list of arguments to check
+shouldNotReceive()
+{
+    echo "__shouldNotReceive() { local ok=0; for arg in \$@; do for excl in $@; do [[ \"\$arg\" == \"\${excl}\" ]] && ok=1 && break; done; done; if [[ \${ok} -ne 0 ]]; then echo \"Failed: expected not to receive any of '$@', but got '\$arg'\"; return 1; fi }"
+}
