@@ -27,13 +27,18 @@ QuickMock.support.functionExists()
 # @param string $1 function name to revert
 QuickMock.support.revertFunction()
 {
-    local backup="QMS_old$1"
+    local prefix="$(QuickMock.support.backupPrefix)"
+    local backup="${prefix}$1"
 
     if QuickMock.support.functionExists "${backup}"; then
         local definition="$(declare -f ${backup})"
-        local reverted="${definition/QMS_old/}"
+        local reverted="${definition/${prefix}/}"
 
         eval "${reverted}"
     fi
 }
 
+QuickMock.support.backupPrefix()
+{
+    echo "SQM_OLD_"
+}

@@ -8,13 +8,14 @@ QuickMock.newStub()
 {
     local name="$1"
     local body="$2"
+    local prefix="$(QuickMock.support.backupPrefix)"
 
     if [ -z "${body}" ]; then
         body="return 0"
     fi
 
     if QuickMock.support.functionExists "${name}"; then
-        eval "QMS_old$(declare -f ${name})"
+        eval "${prefix}$(declare -f ${name})"
     fi
 
     eval "${name}() { ${body}; }"

@@ -18,6 +18,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - quickmock common library:
     * QuickMock.trackDouble in replacement of QuickMock.trackStub
     * QuickMock.releaseDoubles in replacement of QuickMock.releaseStubs
+- QuickMock.support.backupPrefix to provide a prefix for command backups (no more hardcoded)
 
 ### 0.1.0 - 2015-09-28
 #### Added
