@@ -65,6 +65,9 @@ An expectation:
 
 > While waiting for some examples, please refer to the [mock tests](tests/mock_test.sh)
 
+### Known Issues
+* currently an expectation must be given in the form of a one line string
+
 ### Catalog of expectation providers
 #### shouldReceive
 Used to check the correctness of the arguments passed to the mock.    

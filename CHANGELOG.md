@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 #### Changed
 - detail the expectation catalog in README
+- add expectation _Known Issues_ section
 
 #### Fixed
 - add missing _must_ keyword in expectation convention paragraph of README
