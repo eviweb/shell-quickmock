@@ -93,6 +93,17 @@ mock arg3 arg4  # succeed
 mock arg3 arg1  # failed
 ```
 
+#### andReturn
+Used to define some values to be returned by the mock.    
+_Synopsis:_ `QuickMock.newMock "mock" "$(andReturn val1 [val2 [val3]...])"`    
+_Example:_    
+
+```bash
+QuickMock.newMock "mock" "$(andReturn value to be returned)"
+
+res=$(mock) # $res = "value to be returned"
+```
+
 Common API
 ----------
 ### Release a Double

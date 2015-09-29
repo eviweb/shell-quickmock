@@ -17,6 +17,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 #### Added
 - shouldReceive expectation
 - shouldNotReceive expectation
+- andReturn expectation
 - mocking integration tests
 - trim support function
 - new expectation _Known Issues_ section in README

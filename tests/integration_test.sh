@@ -73,6 +73,15 @@ testMockingWithShouldNotReceive()
     assertFalse "Should not pass" "mock c b"
 }
 
+testMockingWithAndReturn()
+{
+    local expected="val1 val2"
+
+    QuickMock.newMock "mock" "$(andReturn ${expected})"
+
+    assertEquals "expected values should be returned" "${expected}" "$(mock)"
+}
+
 ###### Setup / Teardown #####
 tearDown()
 {

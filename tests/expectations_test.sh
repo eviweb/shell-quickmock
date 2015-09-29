@@ -73,6 +73,14 @@ testShouldNotReceive()
     assertTrue "expected args: ${expected} should be in error message" ${code}
 }
 
+testAndReturn()
+{
+    local expected="val1 val2"
+
+    echo $(andReturn ${expected}) | grep -oe "echo \"${expected}\";" &>/dev/null && code=$?
+    assertTrue "expected args: ${expected} should be in echo statement" ${code}
+}
+
 ################ RUN shunit2 ################
 findShunit2()
 {

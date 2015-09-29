@@ -44,3 +44,10 @@ shouldNotReceive()
 {
     echo "__shouldNotReceive() { local ok=0; for arg in \$@; do for excl in $@; do [[ \"\$arg\" == \"\${excl}\" ]] && ok=1 && break; done; done; if [[ \${ok} -ne 0 ]]; then echo \"Failed: expected not to receive any of '$@', but got '\$arg'\"; return 1; fi }"
 }
+
+# define values to be returned by a mock
+# @param string[] $@ list of values to return
+andReturn()
+{
+    echo "__andReturn() { echo \"$@\"; }"
+}
