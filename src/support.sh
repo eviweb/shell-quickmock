@@ -5,9 +5,9 @@
 # @param string $1 string to normalize
 QuickMock.support.normalizeSpaces()
 {
-    local subject="$@"
+    local subject=( $(QuickMock.support.trim "$@") )
 
-    echo "${subject}"
+    echo "${subject[@]}"
 }
 
 # check if a function exists

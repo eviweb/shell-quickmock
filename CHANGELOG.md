@@ -11,6 +11,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - add missing _must_ keyword in expectation convention paragraph of README
 - add missing comment for QuickMock.support.backupPrefix
 - leading and trailing spaces are removed from expectation names during mock creation
+- testQuickMockSupportNormalizeSpaces did not get the correct result from the function under test
+- QuickMock.support.normalizeSpaces did not do what it was expected to...
 
 #### Added
 - shouldReceive expectation

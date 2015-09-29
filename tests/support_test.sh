@@ -58,8 +58,9 @@ testQuickMockSupportNormalizeSpaces()
 {
     local subject="   a   b c   d    "
     local expected="a b c d"
-
-    assertSame "spaces have been correctly normalized" "${expected}" "$(QuickMock.support.normalizeSpaces ${subject})"
+    local actual=$(QuickMock.support.normalizeSpaces "${subject}")
+    
+    assertSame "spaces have been correctly normalized" "${expected}" "${actual}"
 }
 
 testQuickMockSupportTrim()
