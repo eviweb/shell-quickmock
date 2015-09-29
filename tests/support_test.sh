@@ -49,25 +49,17 @@ libdir()
 }
 
 ############## End Utilities ###############
+. $(libdir)/shell-testlib/bootstrap.sh
+
+load $(srcdir)/quickmock.sh
 
 ################ Unit tests ################
-testInitialization()
+testQuickMockSupportNormalizeSpaces()
 {
-    local quickmock="$(srcdir)/quickmock.sh"
-    local functions=( 
-        "QuickMock.support.normalizeSpaces"
-        "QuickMock.newStub"
-    )
+    local subject="   a   b c   d    "
+    local expected="a b c d"
 
-    for function in ${functions[@]}; do
-        assertFalse "${function} not yet exists" "[ $(type -t ${function}) == function ]"
-    done
-    
-    . "${quickmock}"
-    
-    for function in ${functions[@]}; do
-        assertTrue "${function} exists" "[ $(type -t ${function}) == function ]"
-    done
+    assertSame "spaces have been correctly normalized" "${expected}" "$(QuickMock.support.normalizeSpaces ${subject})"
 }
 
 ################ RUN shunit2 ################

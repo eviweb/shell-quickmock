@@ -1,88 +1,13 @@
 #! /bin/bash
 # quick mocking library
-# provides some global variables:
-#   - QUICKMOCK_STUBS: list of all existing stubs (should not be updated directly)
+# 
 
-# create a new stub
-# @param string $1 name of the command to get a stub of
-# @param string $2 what the stub should do
-QuickMock.newStub()
+SQM_Init()
 {
-    local name="$1"
-    local body="$2"
+    local src="$(dirname $(readlink -f $BASH_SOURCE))"
 
-    if [ -z "${body}" ]; then
-        body="return 0"
-    fi
-
-    if QuickMock.support.functionExists "${name}"; then
-        eval "QMS_old$(declare -f ${name})"
-    fi
-
-    eval "${name}() { ${body}; }"
-
-    QuickMock.trackStub "${name}"
+    . ${src}/support.sh
+    . ${src}/stub.sh
 }
 
-# track a new stub
-# @param string $1 name of the stub to track
-QuickMock.trackStub()
-{
-    QUICKMOCK_STUBS="${QUICKMOCK_STUBS} $1"
-    QUICKMOCK_STUBS="$(QuickMock.support.normalizeSpaces ${QUICKMOCK_STUBS})"
-}
-
-# release one or many stubs
-# @param string[] $@ list of stub names to release
-QuickMock.releaseStubs()
-{
-    local stubs="$@"
-
-    if [ -z "${stubs}" ]; then
-        stubs="${QUICKMOCK_STUBS}"
-    fi
-
-    for stub in ${stubs[@]}; do
-        QUICKMOCK_STUBS="${QUICKMOCK_STUBS/${stub}/}"
-        unset "${stub}"
-        QuickMock.support.revertFunction "${stub}"
-    done
-
-    QUICKMOCK_STUBS="$(QuickMock.support.normalizeSpaces ${QUICKMOCK_STUBS})"
-}
-
-# normalize spaces
-# @param string $1 string to normalize
-QuickMock.support.normalizeSpaces()
-{
-    local subject="$@"
-
-    echo "${subject}"
-}
-
-# check if a function exists
-# @param string $1 function name to check
-QuickMock.support.functionExists()
-{
-    local ret=1
-
-    if [ "$(type -t $1)" == "function" ]; then
-        ret=0
-    fi
-
-    return $ret
-}
-
-# revert a previous function overwritten by its double
-# @param string $1 function name to revert
-QuickMock.support.revertFunction()
-{
-    local backup="QMS_old$1"
-
-    if QuickMock.support.functionExists "${backup}"; then
-        local definition="$(declare -f ${backup})"
-        local reverted="${definition/QMS_old/}"
-
-        eval "${reverted}"
-    fi
-}
+SQM_Init
