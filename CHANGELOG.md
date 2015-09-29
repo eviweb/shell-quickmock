@@ -4,8 +4,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### [Unreleased][unreleased]
 
+#### Changed
+- detail the expectation catalog in README
+
 #### Fixed
 - add missing _must_ keyword in expectation convention paragraph of README
+
+#### Added
+- shouldReceive expectation
+- mocking integration tests
 
 ### 0.2.1 - 2015-09-29
 #### Changed

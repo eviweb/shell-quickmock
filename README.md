@@ -65,6 +65,19 @@ An expectation:
 
 > While waiting for some examples, please refer to the [mock tests](tests/mock_test.sh)
 
+### Catalog of expectation providers
+#### shouldReceive
+Used to check the correctness of the arguments passed to the mock.    
+_Synopsis:_ `QuickMock.newMock "mock" "$(shouldReceive arg1 [arg2 [arg3]...])"`    
+_Example:_    
+
+```bash
+QuickMock.newMock "mock" "$(shouldReceive a b c)"
+
+mock a b c  # succeed
+mock a      # failed
+```
+
 Common API
 ----------
 ### Release a Double

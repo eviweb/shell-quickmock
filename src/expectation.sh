@@ -24,3 +24,16 @@ QuickMock.expectation.shouldGetCallingArguments()
 {
     [[ "$1" =~ ^__should ]] || return 1
 }
+
+##################################################################
+##########################              ##########################
+#########################  Expectations  #########################
+##########################              ##########################
+##################################################################
+
+# check if the mock receive the expected arguments
+# @param string[] $@ list of arguments to check
+shouldReceive()
+{
+    echo "__shouldReceive() { [[ \"\$@\" == \"$@\" ]] || { echo \"Failed: expected to receive '$@', but got '\$@'\"; return 1; }; }"
+}
