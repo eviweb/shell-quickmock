@@ -8,7 +8,9 @@ SQM_Init()
 
     . ${src}/support.sh
     . ${src}/common.sh
+    . ${src}/expectation.sh
     . ${src}/stub.sh
+    . ${src}/mock.sh
 }
 
 SQM_Init

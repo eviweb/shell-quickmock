@@ -37,6 +37,34 @@ The stubbing process only alters the runtime shell.
 QuickMock.newStub "ls" "echo 'my-file'"
 ```
 
+Mocking API
+-----------
+### Create a Mock
+Done using **QuickMock.newMock**    
+_Synopsis:_ `QuickMock.newMock "mock_name" "expectation1" ["expectation2" ["expectation3"]...]`
+
+It will create a function named *mock_name* with all expectations concatened using the `&&` operator as its function body.   
+At least one expectation is required.    
+As the stubbing process, mocking only alters the runtime shell and also can be released (see [Release a Double](#release-a-double)).   
+
+> **Important note**   
+> All arguments passed to the `QuickMock.newMock` must be (double-)quoted    
+
+```bash
+QuickMock.newMock "mycmd" "what_do_I_expect"
+```
+
+Expectations
+------------
+### Convention
+An expectation:
+* is a function that will be evaluated at runtime
+* must be provided as a string
+* name begin with a double undescore `__` *(ie. __doSomething is valid, iamWrong is not)*
+* whose name begins by `__should` will receive the arguments with which the mock is called
+
+> While waiting for some examples, please refer to the [mock tests](tests/mock_test.sh)
+
 Common API
 ----------
 ### Release a Double

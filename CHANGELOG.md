@@ -4,6 +4,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### [Unreleased][unreleased]
 
+#### Changed
+- update README with mocking and expecation documentation
+
+#### Added
+- mock support
+- expectation support library basis
+
 ### 0.2.0 - 2015-09-29
 #### Removed
 - QUICKMOCK_STUBS global var in favor of a more generic QUICKMOCK_DOUBLES
