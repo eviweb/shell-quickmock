@@ -11,6 +11,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - bootstrap test checks for SQM_Init
 - quickmock test checks for all libraries
 
+#### Added
+- project health status badges in README
+
 ### 0.2.2 - 2015-09-30
 #### Changed
 - detail the expectation catalog in README

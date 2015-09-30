@@ -1,6 +1,10 @@
 Shell QuickMock
 ===============
-bash shell mocking library.
+bash shell mocking library.   
+
+##### Health status
+[![Travis CI - Build Status](https://travis-ci.org/eviweb/shell-quickmock.svg)](https://travis-ci.org/eviweb/shell-quickmock)
+[![Github - Last tag](https://img.shields.io/github/tag/eviweb/shell-quickmock.svg)](https://github.com/eviweb/shell-quickmock/tags)
 
 Installation
 ------------
