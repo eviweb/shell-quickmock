@@ -5,7 +5,7 @@ bash shell mocking library.
 Installation
 ------------
 from within your project directory, run:    
-`git submodule add --name shell-quickmock https://github.com/eviweb/shell-testlib lib/shell-quickmock`   
+`git submodule add --name shell-quickmock https://github.com/eviweb/shell-quickmock lib/shell-quickmock`   
 
 Usage
 -----

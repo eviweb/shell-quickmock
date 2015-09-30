@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### [Unreleased][unreleased]
 
+#### Fixed
+- correct wrong url of the quickmock repository in README installation section
+
 ### 0.2.2 - 2015-09-30
 #### Changed
 - detail the expectation catalog in README
