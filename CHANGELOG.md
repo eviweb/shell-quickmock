@@ -7,6 +7,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 #### Fixed
 - correct wrong url of the quickmock repository in README installation section
 
+#### Changed
+- bootstrap test checks for SQM_Init
+- quickmock test checks for all libraries
+
 ### 0.2.2 - 2015-09-30
 #### Changed
 - detail the expectation catalog in README

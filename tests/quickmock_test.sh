@@ -56,8 +56,10 @@ testInitialization()
     local quickmock="$(srcdir)/quickmock.sh"
     local functions=( 
         "QuickMock.support.normalizeSpaces"
-        "QuickMock.newStub"
         "QuickMock.trackDouble"
+        "QuickMock.expectation.checkNamePattern"
+        "QuickMock.newStub"
+        "QuickMock.newMock"
     )
 
     for function in ${functions[@]}; do

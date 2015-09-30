@@ -53,9 +53,9 @@ testBootstrapProvidesLoadingUtilities()
 {
     local bootstrap="$(maindir)/bootstrap.sh"
 
-    assertNull "QuickMock.newStub function should not be loaded" "$(type -t QuickMock.newStub)"
+    assertNull "SQM_Init function should not be loaded" "$(type -t SQM_Init)"
     . "${bootstrap}"
-    assertEquals "QuickMock.newStub function is loaded" "function" "$(type -t QuickMock.newStub)"
+    assertEquals "SQM_Init function is loaded" "function" "$(type -t SQM_Init)"
 }
 
 ################ RUN shunit2 ################
